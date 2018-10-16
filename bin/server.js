@@ -9,7 +9,7 @@ const webpackConfig = require('../src/config.js');
 module.exports = function(){
     console.log(chalk.green('监听localhost:8080'));
     const app = express();
-    const compiler = webpack(webpackConfig('pages'));
+    const compiler = webpack(webpackConfig('pages', true));
     app.use(webpackMiddleware(compiler,{
         lazy:false,
         stats:{

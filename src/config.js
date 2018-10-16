@@ -8,7 +8,7 @@ const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 function htmlPlugins (src, names){
-    let arr = [], url = path.join(util.USER_DIR, 'dist', 'image');
+    let arr = [];
     names.forEach((name)=>{
         arr.push(new HtmlWebpackPlugin({
             filename:`${name}.html`,
@@ -20,13 +20,13 @@ function htmlPlugins (src, names){
     return arr;
 }
 
-module.exports = (src)=>{
+module.exports = (src, falg)=>{
     src = path.join(util.USER_DIR, src);
     let appNames = fs.readdirSync(src), appEntry = {};
     appNames.forEach((name)=>{
         appEntry[name] = `${src}/${name}/${name}.js`;
     });
-    return {
+    let configObj = {
         entry: appEntry,
         output:{
             filename:`js/[name]_[hash:8].js`,
@@ -131,7 +131,9 @@ module.exports = (src)=>{
                 filename:`[name]_[contenthash:8].css`,
             }),
             new ProgressPlugin(),
-            new UglifyJsPlugin()
-        ]
+        ],
+        devtool:falg ? 'source-map' : undefined
     }
+    !falg && configObj.plugins.push(new UglifyJsPlugin());
+    return configObj;
 }
