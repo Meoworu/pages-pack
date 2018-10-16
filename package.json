@@ -1,16 +1,34 @@
 {
   "name": "papk-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "vue react pack webpack 单页面应用 多页面应用 打包工具",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "007xiangye@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meoworu/pages-pack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Meoworu/pages-pack.git"
+  },
+  "author": "wuzhixiang",
   "license": "ISC",
   "bin": {
     "pack": "./bin/main.js"
   },
+  "keywords": [
+    "vue",
+    "react",
+    "构建",
+    "cli",
+    "server",
+    "web",
+    "单页面",
+    "多页面",
+    "multiple pages"
+  ],
   "dependencies": {
     "autodll-webpack-plugin": "0.3",
     "chalk": "^2.4.1",

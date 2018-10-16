@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const { VueLoaderPlugin } = require('vue-loader');
-
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 function htmlPlugins (src, names){
     let arr = [], url = path.join(util.USER_DIR, 'dist', 'image');
     names.forEach((name)=>{
@@ -131,10 +131,7 @@ module.exports = (src)=>{
                 filename:`[name]_[contenthash:8].css`,
             }),
             new ProgressPlugin(),
-        ],
-        // devServer:{
-        //     contentBase:path.join(util.USER_DIR),
-        //     hot: true,
-        // }
+            new UglifyJsPlugin()
+        ]
     }
 }
