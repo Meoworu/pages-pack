@@ -8,9 +8,9 @@
 # 安装
 
 ```
-npm install -g pack-cli
+npm install -g papk-cli
 
-yarn global add pack-cli
+yarn global add papk-cli
 ```
 或者在一个文件夹中进行如下操作进行安装
 
@@ -44,7 +44,7 @@ npm link
 ```
 pack -v
 
-// 1.0.0
+// 1.1.0
 ```
 说明cli已经链接到全局了
 

@@ -39,6 +39,13 @@ module.exports = (src, falg)=>{
                     use:['vue-loader'],
                 },
                 {
+                    test:/\.ts$/,
+                    exclude:[
+                        path.resolve(util.USER_DIR, 'node_modules'),
+                    ],
+                    use:['ts-loader'],
+                },
+                {
                     test:/(\.js|\.jsx)$/,
                     exclude:[
                         path.resolve(util.USER_DIR, 'node_modules'),
@@ -100,6 +107,10 @@ module.exports = (src, falg)=>{
                     }
                   }
             ]
+        },
+        watchOptions:{
+            // 不去监听node_modules里的文件
+            ignored: /node_modules/
         },
         resolve: {
             modules: [
